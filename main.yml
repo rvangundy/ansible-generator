@@ -1,0 +1,22 @@
+---
+- include: apps/homebrew.yml
+- include: apps/sublime.yml
+- include: apps/dropbox.yml
+- include: apps/chrome.yml
+- include: apps/firefox.yml
+- include: apps/virtualbox.yml
+- include: apps/vagrant.yml
+
+- hosts: all
+  user: ryanvangundy
+  connection: local
+
+  roles:
+    - ansible-generator
+
+  vars:
+    - downloads: ~/.ansible-downloads/
+
+  tasks:
+    - name: Create Ansible downloads directory
+      file: path={{ downloads }} state=directory

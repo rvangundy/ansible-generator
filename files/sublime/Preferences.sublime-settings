@@ -1,0 +1,17 @@
+{
+  "color_scheme": "Packages/User/Monokai (SL).tmTheme",
+  "font_size": 15,
+  "ignored_packages":
+  [
+    "Vintage"
+  ],
+  "tern_arguments":
+  [
+    "--no-port-file"
+  ],
+  "tern_command":
+  [
+    "node",
+    "/usr/local/bin/tern"
+  ]
+}

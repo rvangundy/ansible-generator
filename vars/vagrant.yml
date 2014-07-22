@@ -1,0 +1,9 @@
+app_name: Vagrant
+app_name_pretty: Vagrant
+app_url: "https://dl.bintray.com/mitchellh/vagrant/Vagrant-1.4.3.dmg"
+installer_type: pkg
+install_method: dmg
+install_target: /Volumes/Macintosh\ HD
+mount_path: /Volumes/Vagrant/
+downloads: ~/.ansible-downloads/
+creates: /Applications/Vagrant/bin/vagrant
