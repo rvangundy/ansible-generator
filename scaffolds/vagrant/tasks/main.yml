@@ -1,0 +1,6 @@
+---
+- name: Copy Vagrantfile
+  template: src=Vagrantfile.j2 dest="{{ project_path }}/Vagrantfile"
+
+- name: Update .gitignore
+  lineinfile: dest="{{ project_path }}/.gitignore" line=.vagrant state=present create=no

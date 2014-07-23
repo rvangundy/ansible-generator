@@ -1,0 +1,26 @@
+# This Vagrantfile is used for developing and testing the host environment
+
+VAGRANTFILE_API_VERSION = "2"
+
+Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
+
+  config.vm.provider "virtualbox" do |v|
+    v.memory = 1024
+    v.cpus = 2
+  end
+
+  # BOX
+  config.vm.box = "{{ vagrant_vm_box }}"
+
+  # FOLDERS
+
+  # Configure the window for gatling to coalesce writes.
+  if Vagrant.has_plugin?("vagrant-gatling-rsync")
+    config.gatling.latency = 2.5
+  end
+
+  # PORT FORWARDING
+
+  # PROVISIONING
+
+end
