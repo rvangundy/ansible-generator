@@ -1,0 +1,13 @@
+{
+  "name": "{{ project_name }}",
+  "version": "0.0.0",
+  "scripts": {},
+{% if remote_repo_url %}
+  "repository": {
+    "type": "git",
+    "url": "{{ remote_repo_url }}"
+  },
+{% endif %}
+  "dependencies": {},
+  "devDependencies": {}
+}
