@@ -1,0 +1,12 @@
+---
+- name: Create new project folder
+  file: path={{ project_path }} state=directory
+
+- name: Copy project files
+  copy: src={{ item }} dest="{{ project_path }}/{{ item }}" force=no
+  with_items:
+    - .editorconfig
+    - .gitignore
+
+- name: Set up readme
+  template: src=README.md.j2 dest="{{ project_path }}/README.md"
