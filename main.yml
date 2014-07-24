@@ -20,6 +20,7 @@
       sudo: no
       command: whoami
       register: user_name
+      changed_when: False
       tags: ['common']
 
   vars_prompt:

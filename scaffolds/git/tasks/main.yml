@@ -7,10 +7,12 @@
 
 - name: Add first project files to repo
   command: git add . chdir={{ project_path }}
+  changed_when: False
 
 - name: Get commit count
   command: git rev-list HEAD --count chdir={{ project_path }}
-  ignore_errors: yes
+  failed_when: False
+  changed_when: False
   register: git_commit_count
 
 - name: Make first commit
@@ -19,7 +21,8 @@
 
 - name: Get current remote URL
   command: git remote show origin chdir={{ project_path }}
-  ignore_errors: yes
+  failed_when: False
+  changed_when: False
   register: git_remote_url
 
 - name: Add remote origin
