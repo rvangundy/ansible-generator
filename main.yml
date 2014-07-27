@@ -1,15 +1,4 @@
 ---
-- include: apps/homebrew.yml tags=apps
-- include: apps/sublime.yml tags=apps
-- include: apps/dropbox.yml tags=apps
-- include: apps/chrome.yml tags=apps
-- include: apps/firefox.yml tags=apps
-- include: apps/virtualbox.yml tags=apps
-- include: apps/vagrant.yml tags=apps
-- include: apps/nodejs.yml tags=apps
-
-- hosts: all
-  user: ryanvangundy
   connection: local
 
   pre_tasks:
