@@ -1,4 +1,5 @@
 ---
+- hosts: development
   connection: local
 
   pre_tasks:
