@@ -1,0 +1,4 @@
+---
+version: v0.10.29
+downloads: ~/.ansible-downloads
+repo: https://github.com/joyent/node.git

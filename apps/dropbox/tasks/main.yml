@@ -1,0 +1,3 @@
+---
+- name: Install Dropbox.
+  shell: curl -fkL https://gist.github.com/raw/963046/install-dropbox.sh | sh creates=/Applications/Dropbox.app

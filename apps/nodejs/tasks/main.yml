@@ -1,0 +1,14 @@
+---
+- name: Clone the node.js git repo
+  git: repo={{repo}}
+   dest="{{downloads}}/node"
+   version={{version}}
+
+- name: Build node.js
+  shell: ./configure && make && make install
+  environment:
+    cc: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
+    cxx: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
+  args:
+    chdir: "{{downloads}}/node"
+    creates: /usr/local/bin/node

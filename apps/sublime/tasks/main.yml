@@ -1,0 +1,15 @@
+---
+- name: Install Sublime Text 3
+  include: ../../install/dmg.yml
+
+- name: Create symlink subl for Sublime Text's subl command
+  file: src=/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl dest=/usr/bin/subl state=link
+  sudo: true
+
+- name: Create symlink sublime for Sublime Text's subl command
+  file: src=/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl dest=/usr/bin/sublime state=link
+  sudo: true
+
+- name: Copy Sublime settings files.
+  copy: src='User' dest='~/Library/Application Support/Sublime Text 3/Packages' force=no
+  sudo: no
