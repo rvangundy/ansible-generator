@@ -1,0 +1,2 @@
+---
+dependencies: ["apps/homebrew", "apps/chrome", "apps/firefox", "apps/dropbox", "apps/sublime"]

@@ -1,0 +1,2 @@
+---
+dependencies: ["apps/virtualbox", "apps/vagrant"]
