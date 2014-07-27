@@ -1,0 +1,8 @@
+---
+app_name: GitHub
+app_name_pretty: GitHub for Mac
+app_url: "https://central.github.com/mac/latest"
+installer_type: app
+install_method: zip
+downloads: ~/.ansible-downloads/
+creates: /Applications/GitHub.app
