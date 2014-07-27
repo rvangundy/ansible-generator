@@ -56,7 +56,7 @@ Usage
 From the ansible-generator folder, run:
 
 ```
-ansible-playbook main.yml --connection=local --ask-sudo-pass
+ansible-playbook -i hosts main.yml --ask-sudo-pass
 ```
 
 A series of prompts will appear guiding through the generation of a project scaffold.
