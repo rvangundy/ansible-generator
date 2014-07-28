@@ -1,5 +1,5 @@
 ---
-- name: Download {{ app_name_pretty }}
+- name: Download app
   get_url: url={{ app_url }} dest={{ downloads }}/{{ app_name }}.zip
 
 - name: Check if application is already installed.
@@ -11,14 +11,14 @@
   file: path={{ downloads }}{{ app_name }}/ state=directory
   when: "installed.stdout == '1'"
 
-- name: Extract {{ app_name_pretty }} zip archive
+- name: Extract zip archive
   command: unzip {{ app_name }}.zip -d {{ app_name }}/ chdir={{ downloads }} creates={{ creates }}
 
-- name: Copy {{ app_name_pretty }} app to Applications directory
+- name: Copy app to Applications directory
   command: cp -R {{ app_name }}/{{ app_name }}.app /Applications chdir={{ downloads }} creates={{ creates }}
   when: "installer_type == 'app'"
 
-- name: Install {{ app_name_pretty }} pkg
+- name: Install pkg
   command: sudo installer -package {{ app_name }}/{{ app_name }}.pkg -target {{ install_target }} chdir={{ downloads }} creates={{ creates }}
   when: "installer_type == 'pkg'"
 
