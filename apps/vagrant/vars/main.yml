@@ -8,3 +8,6 @@ install_target: /Volumes/Macintosh\ HD
 mount_path: /Volumes/Vagrant/
 downloads: ~/.ansible-downloads/
 creates: /Applications/Vagrant/bin/vagrant
+vagrant_plugins:
+  - vagrant-digitalocean
+  - vagrant-gatling-rsync

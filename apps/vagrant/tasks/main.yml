@@ -1,3 +1,13 @@
 ---
 - name: Install Vagrant
   include: ../../install/dmg.yml
+
+- name: Check list of installed plugins
+  command: vagrant plugin list
+  changed_when: False
+  register: installed_vagrant_plugins
+
+- name: Install plugins
+  command: vagrant plugin install {{ item }}
+  with_items: vagrant_plugins
+  when: "installed_vagrant_plugins.stdout.find('{{ item }}') == -1"
