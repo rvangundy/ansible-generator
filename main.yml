@@ -24,6 +24,7 @@
       private: no
     - name: "remote_repo_url"
       prompt: "Enter a remote repository URL"
+      default: False
       private: no
 
   vars:
