@@ -13,6 +13,9 @@
       changed_when: False
       tags: ['common']
 
+  post_tasks:
+    - include: scaffolds/git/tasks/first_commit.yml
+
   vars_prompt:
     - name: "projects_folder"
       prompt: "Enter your root projects folder"
