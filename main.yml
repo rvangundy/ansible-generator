@@ -32,6 +32,7 @@
 
   roles:
     - { role: scaffolds/dev, tags: ['dev'] }
-    - { role: scaffolds/node, tags: ['node'] }
-    - { role: scaffolds/vagrant, tags: ['vagrant'] }
     - { role: scaffolds/git, tags: ['git'] }
+    - { role: scaffolds/node, tags: ['node'] }
+    - { role: scaffolds/ansible, tags: ['ansible'] }
+    - { role: scaffolds/vagrant, tags: ['vagrant'] }
