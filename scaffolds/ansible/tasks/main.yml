@@ -1,0 +1,9 @@
+---
+- name: Establish provisioning folder
+  copy: src=provisioning dest={{ project_path }} force=no
+
+- name: Copy hosts file
+  copy: src=hosts dest={{ project_path }} force=no
+
+- name: Update .gitignore
+  lineinfile: dest="{{ project_path }}/.gitignore" line=.galaxy-roles state=present create=no
