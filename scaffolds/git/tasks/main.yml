@@ -5,19 +5,8 @@
     chdir: "{{ project_path }}"
     creates: "{{ project_path }}/.git"
 
-- name: Add first project files to repo
-  command: git add . chdir={{ project_path }}
-  changed_when: False
-
-- name: Get commit count
-  command: git rev-list HEAD --count chdir={{ project_path }}
-  failed_when: False
-  changed_when: False
-  register: git_commit_count
-
-- name: Make first commit
-  command: git commit -m 'Initial commit' chdir={{ project_path }}
-  when: git_commit_count|failed
+- name: Copy .gitignore
+  copy: src=".gitignore" dest="{{ project_path }}/.gitignore" force=no
 
 - name: Get current remote URL
   command: git remote show origin chdir={{ project_path }}
