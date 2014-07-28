@@ -19,8 +19,19 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     config.gatling.latency = 2.5
   end
 
+  {% if vagrant_ports is defined %}
   # PORT FORWARDING
+  {% for item in vagrant_ports %}
+  config.vm.network "forwarded_port", guest: {{ item.guest }}, host: {{ item.host }} # {{ item.description }}
+  {% endfor %}
 
-  # PROVISIONING
+  {% endif %}
+  {% if use_ansible_provisioner is defined %}
+  # ANSIBLE PROVISIONING
+  config.vm.provision "ansible" do |ansible|
+    ansible.playbook = "provisioning/development.yml"
+    ansible.sudo = true
+  end
+  {% endif %}
 
 end
