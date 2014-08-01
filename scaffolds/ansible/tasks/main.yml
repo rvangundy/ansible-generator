@@ -1,9 +1,26 @@
 ---
+- name: Set ansible.cfg
+  template: src=ansible.cfg.j2 dest={{ project_path }}/ansible.cfg
+
 - name: Establish provisioning folder
-  copy: src=provisioning dest={{ project_path }} force=no
+  file: path={{ project_path }}/provisioning state=directory
+
+- name: Populate ansible provisioning files
+  template: src={{ item.src }} dest={{ project_path }}/{{ item.dest }} force=no
+  with_items:
+    - { src: 'provisioning/development.yml.j2', dest: 'provisioning/development.yml'}
+    - { src: 'provisioning/Rolefile.j2', dest: 'provisioning/Rolefile'}
+    - { src: 'provisioning/hosts.j2', dest: 'provisioning/hosts'}
+
+- name: Copy project roles
+  copy: src=../../../roles/{{ item }} dest={{ project_path }}/provisioning/roles force=no
+  with_items: project_roles
 
 - name: Copy hosts file
   copy: src=hosts dest={{ project_path }} force=no
 
 - name: Update .gitignore
   lineinfile: dest="{{ project_path }}/.gitignore" line=.galaxy-roles state=present create=no
+
+- name: Install galaxy-roles
+  command: ansible-galaxy install -p ./.galaxy-roles -r ./provisioning/Rolefile --force chdir={{ project_path }} creates={{ project_path }}/.galaxy-roles

@@ -1,3 +1,0 @@
----
-- name: Set vagrant user's startup path
-  lineinfile: dest=/home/vagrant/.profile line="cd {{ vagrant_start_path }}"

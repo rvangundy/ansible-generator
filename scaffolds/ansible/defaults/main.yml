@@ -1,0 +1,3 @@
+---
+project_roles: ['webapp', 'webdev']
+galaxy_roles: ['leonidas.nvm', 'nickjj.ruby']

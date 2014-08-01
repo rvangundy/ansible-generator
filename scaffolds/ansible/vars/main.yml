@@ -1,2 +1,5 @@
 ---
 use_ansible_provisioner: True
+vagrant_folders:
+  - { src: './provisioning/roles', dest: '/home/vagrant/roles' }
+  - { src: './.galaxy-roles', dest: '/home/vagrant/galaxy_roles' }
