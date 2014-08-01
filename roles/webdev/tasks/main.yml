@@ -1,0 +1,10 @@
+---
+- name: Set vagrant user's startup path
+  lineinfile: dest=/home/vagrant/.profile line="cd {{ project_path }}"
+
+- name: Install global npm packages
+  npm: name={{ item }} global=yes
+  with_items: npm_global_packages
+
+- name: Install project npm packages from package.json
+  npm: path={{ project_path }} production=no

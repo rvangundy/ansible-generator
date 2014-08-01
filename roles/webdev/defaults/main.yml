@@ -1,0 +1,3 @@
+---
+project_path: '/var/www'
+npm_global_packages: ['node-inspector']
