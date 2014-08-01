@@ -1,0 +1,4 @@
+---
+project_path: '/var/www'
+ruby_gems: ['sass']
+npm_global_packages: ['pm2']

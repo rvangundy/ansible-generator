@@ -1,0 +1,4 @@
+---
+- name: Establish ansible roles
+  copy: src="roles/{{ item }}" dest="{{ project_path }}/provisioning/roles" force=no
+  with_items: project_roles

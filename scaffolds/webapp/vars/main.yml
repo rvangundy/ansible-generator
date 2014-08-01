@@ -1,0 +1,2 @@
+vagrant_rsync_folders:
+  - { src: './', dest: '/var/www'}
