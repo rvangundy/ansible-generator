@@ -35,8 +35,9 @@
     - project_path: "/Users/{{ user_name.stdout }}/{{ projects_folder }}/{{ project_name }}"
 
   roles:
-    - { role: scaffolds/dev, tags: ['dev'] }
-    - { role: scaffolds/git, tags: ['git'] }
-    - { role: scaffolds/node, tags: ['node'] }
-    - { role: scaffolds/ansible, tags: ['ansible'] }
-    - { role: scaffolds/vagrant, tags: ['vagrant'] }
+    - { role: scaffolds/common }
+    - { role: scaffolds/git }
+    - { role: scaffolds/node }
+    - { role: scaffolds/ansible }
+    - { role: scaffolds/webapp }
+    - { role: scaffolds/vagrant }
