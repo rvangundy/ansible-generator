@@ -1,2 +1,4 @@
 ---
 vagrant_vm_box: ubuntu/trusty64
+vagrant_folders: []
+vagrant_rsync_folders: []
