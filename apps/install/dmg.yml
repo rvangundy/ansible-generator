@@ -3,10 +3,10 @@
   get_url: url={{ app_url }} dest={{ downloads }}/{{ app_name }}.dmg
 
 - name: Mount image
-  command: hdiutil attach {{ app_name }}.dmg chdir={{ downloads }} creates={{ creates }}
+  command: hdiutil attach {{ app_name }}.dmg chdir={{ downloads }} creates="{{ creates }}"
 
 - name: Copy app to Applications directory
-  command: cp -R {{ mount_path }}{{ app_name }}.app /Applications creates={{ creates }}
+  command: cp -R {{ mount_path }}{{ app_name }}.app /Applications creates="{{ creates }}"
   when: "installer_type == 'app'"
 
 - name: Install pkg

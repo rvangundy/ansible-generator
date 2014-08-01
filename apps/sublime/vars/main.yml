@@ -6,4 +6,4 @@ installer_type: app
 install_method: dmg
 mount_path: /Volumes/Sublime\ Text/
 downloads: ~/.ansible-downloads/
-creates: /Applications/Sublime\ Text.app
+creates: /Applications/Sublime Text.app

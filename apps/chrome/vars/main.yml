@@ -5,5 +5,5 @@ app_url: "https://dl.google.com/chrome/mac/stable/GGRO/googlechrome.dmg"
 installer_type: app
 install_method: dmg
 mount_path: /Volumes/Google\ Chrome/
-creates: /Applications/Google\ Chrome.app
+creates: /Applications/Google Chrome.app
 downloads: ~/.ansible-downloads/
