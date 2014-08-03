@@ -1,0 +1,12 @@
+---
+- name: Retrieve ssh config from vagrant
+  shell: vagrant ssh-config --host vagrant chdir={{ project_path }}
+  changed_when: False
+  register: vagrant_ssh_config
+
+- name: Add config header
+  lineinfile: dest=~/.ssh/config line="Host vagrant" create=yes state=present
+
+- name: Add ssh config to ~/.ssh/config
+  lineinfile: dest=~/.ssh/config line="{{ item }}" insertafter="Host vagrant"
+  with_items: vagrant_ssh_config.stdout_lines
