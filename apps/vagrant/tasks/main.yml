@@ -3,7 +3,7 @@
   include: ../../install/dmg.yml
 
 - name: Add alias for starting vagrant
-  lineinfile: src=~/.bash_profile line="alias jackin='vagrant gatling-rsync-auto > /dev/null & vagrant ssh && fg'"
+  lineinfile: dest=~/.bash_profile line="alias jackin='vagrant gatling-rsync-auto > /dev/null & vagrant ssh && fg'"
 
 # - name: Nokogiri fix
 #   lineinfile: src="" line='s.add_dependency(%q<nokogiri>, ["< 1.6.2"])'
