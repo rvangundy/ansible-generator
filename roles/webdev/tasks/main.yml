@@ -1,4 +1,7 @@
 ---
+# - name: Install unison
+#   apt: name=unison=2.40.61 update_cache=yes
+
 - name: Set vagrant user's startup path
   lineinfile: dest=/home/vagrant/.profile line="cd {{ project_path }}"
 
