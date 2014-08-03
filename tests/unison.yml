@@ -1,0 +1,20 @@
+---
+- hosts: development
+  connection: local
+
+  pre_tasks:
+    - name: Create Ansible downloads directory
+      file: path={{ downloads }} state=directory
+      tags: ['common']
+    - name: Get user's name
+      sudo: no
+      command: whoami
+      register: user_name
+      changed_when: False
+      tags: ['common']
+
+  vars:
+    - downloads: ~/.ansible-downloads/
+
+  roles:
+    - { role: ../apps/unison }

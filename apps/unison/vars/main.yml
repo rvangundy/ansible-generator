@@ -1,0 +1,9 @@
+---
+app_name: Unison
+app_name_pretty: Unison
+app_url: "http://alan.petitepomme.net/unison/assets/2011.01.28-Esup-Unison-2.40.61-mac-intel.dmg"
+installer_type: app
+install_method: dmg
+mount_path: /Volumes/Unison/
+creates: /Applications/Unison.app
+downloads: ~/.ansible-downloads/
