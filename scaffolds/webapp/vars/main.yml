@@ -1,2 +1,3 @@
 vagrant_rsync_folders:
   - { src: './', dest: '/var/www'}
+galaxy_roles: ['nickjj.nodejs', 'Sirupsen.ruby-common']
