@@ -1,4 +1,4 @@
 ---
 dependencies:
-  - { role: 'leonidas.nvm', node_version: 0.10.30 }
+  - { role: 'nickjj.nodejs' }
   - { role: 'nickjj.ruby' }
