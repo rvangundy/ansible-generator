@@ -1,0 +1,21 @@
+ {
+  "apps" : [{
+    "name"        : "web",
+    "script"      : "index.js",
+    "args"        : "['--debug']",
+    "ignoreWatch" : ["client"],
+    "watch"       : "./",
+    "env" : {
+        "NODE_ENV":"development"
+    }
+  },
+  {
+    "name"        : "node-inspector",
+    "script"      : "node-inspector"
+  },
+  {
+    "name" : "SASS",
+    "name" : "sass --watch styles/main.scss:styles/main.css"
+  }
+  ]
+}
