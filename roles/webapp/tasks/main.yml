@@ -3,6 +3,13 @@
   gem: name={{ item }} state=latest user_install=yes
   with_items: ruby_gems
 
+- name: Add ruby gems to path
+  lineinfile:
+    dest=/home/vagrant/.profile
+    state=present
+    regexp='PATH={{gems_path}}:$PATH'
+    line='PATH={{gems_path}}:$PATH'
+
 - name: Install global npm packages
   npm: name={{ item }} global=yes
   with_items: npm_global_packages

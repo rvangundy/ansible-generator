@@ -1,4 +1,5 @@
 ---
 project_path: '/var/www'
 ruby_gems: ['sass']
+gems_path: '/home/vagrant/.gem/ruby/2.1.0/bin'
 npm_global_packages: ['pm2']
