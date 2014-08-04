@@ -11,11 +11,14 @@
   },
   {
     "name"        : "node-inspector",
-    "script"      : "node-inspector"
+    "script"      : "/usr/bin/node-inspector"
   },
   {
     "name" : "SASS",
-    "name" : "sass --watch styles/main.scss:styles/main.css"
+    "script" : "/home/vagrant/.gem/ruby/2.1.0/bin/sass",
+    "args": "['--watch', 'client/styles/sass/main.scss:client/styles/main.css']",
+    "exec_mode" : "fork_mode",
+    "exec_interpreter": "none"
   }
   ]
 }
