@@ -2,8 +2,8 @@
 - name: Copy Vagrantfile
   template: src=Vagrantfile.j2 dest="{{ project_path }}/Vagrantfile"
 
-- name: Perform initial vagrant up
-  command: vagrant up --no-provision creates=.vagrant chdir={{ project_path }}
+# - name: Perform initial vagrant up
+#   command: vagrant up --no-provision creates=.vagrant chdir={{ project_path }}
 
 - name: Update .gitignore
   lineinfile: dest="{{ project_path }}/.gitignore" line=.vagrant state=present create=no
