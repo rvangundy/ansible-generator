@@ -1,3 +1,9 @@
 vagrant_rsync_folders:
   - { src: './', dest: '/var/www'}
 galaxy_roles: ['nickjj.nodejs', 'Sirupsen.ruby-common']
+vagrant_ports:
+  - { guest: "8080", host: "8080", description: "node-inspector"}
+  - { guest: "5858", host: "5858", description: "node-inspector"}
+  - { guest: "35729", host: "35729", description: "livereload"}
+  - { guest: "8000", host: "8000", description: "web development"}
+  - { guest: "80", host: "8800", description: "web production"}
