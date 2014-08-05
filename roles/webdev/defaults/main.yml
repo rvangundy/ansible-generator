@@ -1,3 +1,4 @@
 ---
 project_path: '/var/www'
 npm_global_packages: ['node-inspector']
+ruby_gems: ['sass','bourbon','neat','bitters']
