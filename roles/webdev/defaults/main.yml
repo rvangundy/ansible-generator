@@ -1,4 +1,4 @@
 ---
 project_path: '/var/www'
-npm_global_packages: ['node-inspector']
+gems_path: '/home/vagrant/.gem/ruby/2.1.0/bin'
 ruby_gems: ['sass','bourbon','neat','bitters']
