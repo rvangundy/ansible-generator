@@ -8,12 +8,10 @@
  *  Dependencies  *
  ******************/
 
-var gulp     = require('gulp');
-var watchify = require('gulp-watchify');
-var uglify   = require('gulp-uglify');
-var dombarsify = require('dombarsify');
-var envify = require('envify');
-var aggregate = require('stream-aggregate');
+var gulp       = require('gulp');
+var browserify = require('gulp-browserify');
+var map        = require('map-stream');
+var livereload = require('gulp-livereload');
 
 /*********
  *  Env  *
@@ -35,8 +33,19 @@ var MAIN_JS = './client/scripts/main.js';
 module.exports = function route(server, routes) {
     var jsSource;
 
-    function updateContents(file) {
-        jsSource = file.contents;
+    function buildSource() {
+        var transforms = ['dombarsify', 'envify'];
+
+        // Uglify if in production
+        if (!isDevelopment) { transforms.push('uglifyify'); }
+
+        gulp.src(routes.src).pipe(browserify({
+            transform: transforms,
+            debug: isDevelopment
+        })).pipe(map(function (file, cb) {
+            jsSource = file._contents.toString();
+            cb(null, file);
+        })).pipe(livereload());
     }
 
     routes = routes || {
@@ -44,27 +53,8 @@ module.exports = function route(server, routes) {
         public: ROUTE
     };
 
-    watchify(function (watchify) {
-        var stream = gulp.src(routes.src)
-            .pipe(watchify({
-                watch: true,
-                setup: function (b) {
-                    b.transform(dombarsify);
-                    b.transform(envify);
-
-                    if (!isDevelopment) {
-                        b.transform(uglify);
-                    }
-                }
-            }));
-
-        aggregate(stream, function (err, data) {
-            console.log(err);
-            console.log(data);
-        });
-
-        return stream;
-    })();
+    buildSource();
+    gulp.watch(['./client/**/*.js', './client/**/*.hbs']).on('change', buildSource);
 
     /***********
      *  Route  *

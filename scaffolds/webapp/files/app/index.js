@@ -20,13 +20,7 @@ var PORT = process.env.PORT || 80;
 
 // Live reload
 if (process.env.NODE_ENV === 'development') {
-    var livereload = require('livereload');
-    var connectLivereload = require('connect-livereload');
-    livereload.createServer({
-        exts: ['js', 'hbs', 'json', 'css', 'styl', 'html']
-    }).watch('./client');
-
-    server.use(connectLivereload());
+    server.use(require('connect-livereload')());
 }
 
 // Gzip

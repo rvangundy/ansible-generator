@@ -5,7 +5,6 @@
  ******************/
 
 var mainModule = require('../modules/main');
-var labelModule = require('../modules/label');
 
 /**********
  *  Main  *
@@ -13,5 +12,4 @@ var labelModule = require('../modules/label');
 
 window.addEventListener('load', function () {
     document.body.appendChild(mainModule());
-    document.body.appendChild(labelModule());
 });

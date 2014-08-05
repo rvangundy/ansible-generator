@@ -1,17 +1,15 @@
  {
-  "apps" : [{
-    "name"        : "web",
-    "script"      : "index.js",
-    "args"        : "['--debug']",
+  "apps" : [
+  {
+    "name"   : "web",
+    "script" : "index.js",
+    "exec_mode" : "fork_mode",
     "ignoreWatch" : ["client"],
     "watch"       : "./",
     "env" : {
-        "NODE_ENV":"development"
+        "NODE_ENV":"development",
+        "PORT": 8000
     }
-  },
-  {
-    "name"        : "node-inspector",
-    "script"      : "/usr/bin/node-inspector"
   },
   {
     "name" : "SASS",
