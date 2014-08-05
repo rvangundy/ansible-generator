@@ -8,3 +8,6 @@
 
 - name: Copy app folder
   copy: src="app" dest="{{ project_path }}" force=no
+
+- name: Install node_modules from package.json
+  npm: path={{ project_path }}
