@@ -1,4 +1,4 @@
 ---
-vagrant_vm_box: ubuntu/trusty64
+vagrant_vm_box: dockmaster
 vagrant_folders: []
 vagrant_rsync_folders: []
