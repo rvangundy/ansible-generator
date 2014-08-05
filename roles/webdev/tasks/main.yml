@@ -11,3 +11,18 @@
 
 - name: Install project npm packages from package.json
   npm: path={{ project_path }} production=no
+
+- name: Install ruby-gems
+  gem: name={{ item }} state=latest user_install=yes
+  sudo: no
+  with_items: ruby_gems
+
+- name: Install SASS libraries
+  command: "{{ item.cmd }}"
+  args:
+    chdir: "{{ project_path }}/app/client/styles/sass"
+    creates: "{{ project_path }}/app/client/styles/sass/{{ item.name }}"
+  with_items:
+    - { cmd: bourbon install, name: bourbon }
+    - { cmd: neat install, name: neat }
+    - { cmd: bitters install, name: base }
