@@ -1,2 +1,4 @@
 ---
 project_roles: ['webapp', 'webdev']
+ruby_gems: ['sass','bourbon','neat','bitters']
+gems_path: '/usr/bin/'

@@ -3,8 +3,22 @@
   copy: src="roles/{{ item }}" dest="{{ project_path }}/provisioning/roles" force=no
   with_items: project_roles
 
-- name: Copy package.json
-  template: src=package.json.j2 dest="{{ project_path }}/package.json" force=no
+- name: Install ruby-gems
+  gem: name={{ item }} state=latest
+  with_items: ruby_gems
 
 - name: Copy app folder
   copy: src="app" dest="{{ project_path }}" force=no
+
+- name: Install bourbon in styles
+  command: "{{item.cmd}}"
+  args:
+    chdir: "{{ project_path }}/app/client/styles/sass"
+    creates: "{{ project_path }}/app/client/styles/sass/{{ item.name }}"
+  with_items:
+    - { cmd: bourbon install,  name: bourbon }
+    - { cmd: neat install,  name: neat }
+    - { cmd: bitters install,  name: base }
+
+- name: Copy package.json
+  template: src=package.json.j2 dest="{{ project_path }}/package.json" force=no
