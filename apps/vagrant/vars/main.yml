@@ -11,3 +11,4 @@ creates: /Applications/Vagrant/bin/vagrant
 vagrant_plugins:
   - vagrant-digitalocean
   - vagrant-gatling-rsync
+  - vagrant-rsync-back
