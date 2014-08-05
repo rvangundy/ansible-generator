@@ -2,5 +2,8 @@
 # - name: Copy package.json
 #   template: src=package.json.j2 dest="{{ project_path }}/package.json" force=no
 
+- name: Copy .jshintrc
+  copy: src=.jshintrc dest="{{ project_path }}/.jshintrc" force=no
+
 - name: Update .gitignore
   lineinfile: dest="{{ project_path }}/.gitignore" line=node_modules create=no
