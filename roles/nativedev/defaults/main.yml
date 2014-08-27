@@ -1,0 +1,4 @@
+---
+project_path: '/var/www'
+gems_path: '/home/vagrant/.gem/ruby/2.1.0/bin'
+ruby_gems: ['sass','bourbon','neat','bitters']

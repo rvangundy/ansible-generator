@@ -1,0 +1,10 @@
+---
+app_name: Xcode
+app_name_pretty: Xcode
+app_url: "http://download.virtualbox.org/virtualbox/4.3.14/VirtualBox-4.3.14-95030-OSX.dmg"
+mount_path: /Volumes/Xcode/
+installer_type: pkg
+install_method: dmg
+install_target: /Volumes/Macintosh\ HD
+downloads: ~/.ansible-downloads/
+creates: /Applications/Xcode.app

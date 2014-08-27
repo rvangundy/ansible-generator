@@ -1,0 +1,43 @@
+---
+- hosts: development
+  connection: local
+
+  pre_tasks:
+    - name: Create Ansible downloads directory
+      file: path={{ downloads }} state=directory
+      tags: ['common']
+    - name: Get user's name
+      sudo: no
+      command: whoami
+      register: user_name
+      changed_when: False
+      tags: ['common']
+
+  post_tasks:
+    - include: scaffolds/git/tasks/first_commit.yml
+
+  vars_prompt:
+    - name: "projects_folder"
+      prompt: "Enter your root projects folder"
+      default: "Documents"
+      private: no
+    - name: "project_name"
+      prompt: "Name your project"
+      default: "myProject"
+      private: no
+    - name: "remote_repo_url"
+      prompt: "Enter a remote repository URL"
+      default: False
+      private: no
+
+  vars:
+    - downloads: ~/.ansible-downloads/
+    - project_path: "/Users/{{ user_name.stdout }}/{{ projects_folder }}/{{ project_name }}"
+
+  roles:
+    - { role: scaffolds/common }
+    - { role: scaffolds/git }
+    - { role: scaffolds/node }
+    - { role: scaffolds/ansible }
+    - { role: scaffolds/webapp }
+    - { role: scaffolds/vagrant }

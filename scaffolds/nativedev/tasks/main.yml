@@ -1,0 +1,13 @@
+---
+- name: Establish ansible roles
+  copy: src="roles/{{ item }}" dest="{{ project_path }}/provisioning/roles" force=no
+  with_items: project_roles
+
+- name: Copy app folder
+  copy: src="app" dest="{{ project_path }}" force=no
+
+- name: Copy package.json
+  template: src=package.json.j2 dest="{{ project_path }}/package.json" force=no
+
+- name: Install node_modules from package.json
+  npm: path={{ project_path }}

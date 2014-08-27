@@ -1,0 +1,25 @@
+---
+# - name: Install unison
+#   apt: name=unison=2.40.61 update_cache=yes
+
+- name: Set vagrant user's startup path
+  lineinfile: dest=/home/vagrant/.profile line="cd {{ project_path }}"
+
+- name: Install project npm packages from package.json
+  npm: path={{ project_path }} production=no
+
+- name: Install ruby-gems
+  gem: name={{ item }} state=latest user_install=yes
+  sudo: no
+  with_items: ruby_gems
+
+- name: Install SASS libraries
+  command: "{{ gems_path }}/{{ item.cmd }}"
+  sudo: no
+  args:
+    chdir: "{{ project_path }}/app/client/styles/sass"
+    creates: "{{ project_path }}/app/client/styles/sass/{{ item.name }}"
+  with_items:
+    - { cmd: bourbon install, name: bourbon }
+    - { cmd: neat install, name: neat }
+    - { cmd: bitters install, name: base }
