@@ -1,0 +1,8 @@
+---
+app_name: Packer
+app_name_pretty: Packer
+app_url: "https://dl.bintray.com/mitchellh/packer/0.6.1_darwin_386.zip"
+install_method: zip
+install_target: /usr/local/bin
+downloads: ~/.ansible-downloads/
+creates: {{ install_target }}/packer

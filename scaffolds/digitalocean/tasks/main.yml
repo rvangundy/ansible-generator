@@ -1,0 +1,46 @@
+---
+- name: Install DigitalOcean api
+  pip: name=dopy state=present
+  when: do_client_id is defined
+
+# - name: Authorize SSH key
+#   sudo: no
+#   authorized_key: user="{{ user_name.stdout }}" key="{{ lookup('file', '/User/' + user_name.stdout + '/.ssh/id_rsa.pub') }}"
+
+# - name: Retreive the SSH key
+#   sudo: no
+#   command: cat id_rsa.pub chdir={{ lookup('env', 'HOME') }}/.ssh
+#   failed_when: False
+#   changed_when: False
+#   register: ssh_key
+
+# - name: Ensure an SSH key is present
+#   sudo: no
+#   digital_ocean_sshkey:
+#       state=present
+#       name="{{ user_name.stdout }}"
+#       ssh_pub_key="{{ ssh_key.stdout }}"
+#   environment:
+#     DO_CLIENT_ID: "{{ do_client_id }}"
+#     DO_API_KEY: "{{ do_api_key }}"
+#   register: ssh_key_info
+#   when: do_client_id != ""
+
+# - name: Tell me about SSH keys
+#   debug: msg="{{ ssh_key_info }}"
+
+- name: Create droplet
+  digital_ocean:
+      state=present
+      command=droplet
+      name={{ project_name }}
+      region_id={{ droplet_region }}
+      image_id={{ droplet_image }}
+      size_id={{ droplet_size }}
+      wait_timeout=500
+      unique_name=Yes
+  register: digitalocean
+  environment:
+    DO_CLIENT_ID: "{{ do_client_id }}"
+    DO_API_KEY: "{{ do_api_key }}"
+  when: do_client_id != ""

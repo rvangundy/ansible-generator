@@ -1,2 +1,7 @@
 [development]
 localhost
+
+{% if digitalocean is defined %}
+[production]
+{{ digitalocean.droplet.ip_address }}
+{% endif %}

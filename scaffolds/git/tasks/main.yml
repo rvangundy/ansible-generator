@@ -16,4 +16,4 @@
 
 - name: Add remote origin
   command: git remote add origin {{ remote_repo_url }} chdir={{ project_path }}
-  when: remote_repo_url != '' and git_remote_url|failed
+  when: remote_repo_url != "" and git_remote_url|failed
